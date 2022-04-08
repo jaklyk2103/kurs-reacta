@@ -1,0 +1,36 @@
+:root {
+  --width: 25%;
+}
+
+.TimeboxEditor {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: right;
+}
+
+label > input {
+  width: 60%;
+  margin-left: 1rem;
+}
+
+.ProgressBar {
+  border: 1px solid orangered;
+  border-radius: 5px;
+  height: 2rem;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.ProgressBar::before {
+  content: "";
+  float: right;
+  background-color: orangered;
+  height: 100%;
+  width: calc(100% - var(--width))
+}
+
+button {
+  font-size: 16px;
+  margin-left: 10px;
+}
