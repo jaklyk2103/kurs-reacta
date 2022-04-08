@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Kurs Reacta - Tydzień 2</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <style>
+    .App {
+      font-family: sans-serif;
+    }
+
+    .TimeboxEditor {
+      text-align: right;
+      border: 1px solid gray;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      min-width: 60%;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    button {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .Timebox {
+      border: 1px solid gray;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .Clock {
+      color: orangered;
+    }
+
+    .ProgressBar {
+      border: 1px solid orangered;
+      border-radius: 5px;
+      height: 25px;
+      margin-bottom: 20px;
+      padding: 5px;
+    }
+
+    .ProgressBar::before {
+      content: "";
+      float: right;
+      height: 100%;
+      width: calc(100% - var(--width));
+      color: blue;
+      background-color: orangered;
+    }
+
+    .inactive {
+      filter: blur(2px) grayscale(1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  
+  
+  <!-- <h1>Kurs Reacta Tydzień 2</h1>
+  <hr />
+  <div class="App">
+    <div class="TimeboxEditor inactive">
+      <label>Co robisz?
+        <input disabled value="Uczę się skrótów klawiszowych" type="text" /></label><br />
+      <label>Ile minut? <input disabled value="25" type="number" /></label><br />
+      <button disabled>Zacznij</button>
+    </div>
+    <div class="Timebox">
+      <h1>Uczę się skrótów klawiszowych</h1>
+      <h2 class="Clock">Pozostało 13:28</h2>
+      <div class="ProgressBar" style="--width: 20%"></div>
+      <button disabled>Start</button>
+      <button>Stop</button>
+      <button>Pauzuj</button>
+      Liczba przerw: 2
+    </div>
+  </div> -->
+</body>
+<script type="text/javascript">
+  const rootElement = document.getElementById("root");
+
+  function prepareElement(tag, props) {
+    const domElement = document.createElement(tag)
+    return Object.assign(domElement, props)
+  }
+
+  const mainHeaderElement = prepareElement("h1", {textContent: "Kurs Reacta Tydzień 2"})
+  const hrElement = document.createElement("hr")
+  rootElement.append(mainHeaderElement)
+  rootElement.append(hrElement)
+
+  const appElement = document.createElement("div")
+  const TimeboxEditorElement = prepareElement("div", { className: "TimeboxEditor inactive" })
+  const FirstLabelElement = prepareElement("label", { textContent: "Co robisz?" })
+  const FirstInputElement = prepareElement("input", { disabled: true, value: "Uczę się skrótów klawiszowych", type: "text" })
+  const FirstBreakElement = document.createElement("br")
+  const SecondLabelElement = prepareElement("label", { textContent: "Ile minut?" })
+  const SecondInputElement = prepareElement("input", { disabled: true, value: "25", type: "number" })
+  const SecondBreakElement = document.createElement("br")
+  const EditorButton = prepareElement("button", { disabled: true, textContent: "Zacznij" })
+
+  FirstLabelElement.append(FirstInputElement)
+  FirstLabelElement.append(FirstBreakElement)
+  SecondLabelElement.append(SecondInputElement)
+  SecondLabelElement.append(SecondBreakElement)
+  TimeboxEditorElement.append(FirstLabelElement)
+  TimeboxEditorElement.append(SecondLabelElement)
+  TimeboxEditorElement.append(EditorButton)
+
+  // timebox ready
+
+  const TimeboxElement = prepareElement("div", { className: "Timebox" })
+  const H1Element = prepareElement("h1", { textContent: "Uczę się skrótów klawiszowych" })
+  const H2Element = prepareElement("h2", { className: "Clock", textContent: "Pozostało 12:12" })
+  const ProgressBarElement = prepareElement("div", { className: "ProgressBar" })
+  document.documentElement.style.setProperty('--width', '20%')
+  const StartButtonElement = prepareElement("button", { disabled: true, textContent: "Start" })
+  const StopButtonElement = prepareElement("button", { textContent: "Stop" })
+  const PauseButtonElement = prepareElement("button", { textContent: "Pauzuj" })
+  
+  TimeboxElement.append(H1Element)
+  TimeboxElement.append(H2Element)
+  TimeboxElement.append(ProgressBarElement)
+  TimeboxElement.append(StartButtonElement)
+  TimeboxElement.append(StopButtonElement)
+  TimeboxElement.append(PauseButtonElement)
+  TimeboxElement.append("Liczba przerw: 2")
+  appElement.append(TimeboxEditorElement)
+  appElement.append(TimeboxElement)
+  rootElement.append(appElement)
+
+
+      // const element = React.createElement(
+      //   "h2",
+      //   { className: "Clock" },
+      //   "Pozostało 12:55"
+      // )
+
+      // console.log([domElement, element])
+</script>
+
+</html>
