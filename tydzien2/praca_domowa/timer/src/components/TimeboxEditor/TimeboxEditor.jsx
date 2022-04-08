@@ -1,22 +1,25 @@
 import "./TimeboxEditor.css"
 import { useState } from 'react'
 
-export const TimeboxEditor = ({ isRunning, setRunning, setTitle, setTime }) => {
+export const TimeboxEditor = ({ isRunning, setRunning, setTitle, setTimeInMinutes, setEdited }) => {
   const [_title, _setTitle] = useState('')
   const [_time, _setTime] = useState(0)
 
   const handleOnChangeTitle = event => {
-    _setTitle(event.value)
+    _setTitle(event.target.value)
+    console.log(`title value: ${_title}`)
   }
 
   const handleOnChangeTime = event => {
-    _setTime(event.value)
+    _setTime(event.target.value)
+    console.log(`time value: ${_time}`)
   }
 
   const handleButtonClick = event => {
     setTitle(_title)
-    setTime(_time)
+    setTimeInMinutes(_time)
     setRunning(true)
+    setEdited(true)
   }
 
   return (
