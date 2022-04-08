@@ -1,3 +1,8 @@
 .App {
   margin: 1rem;
 }
+
+.inactive {
+  opacity: 70%;
+  filter:blur(3px);
+}
