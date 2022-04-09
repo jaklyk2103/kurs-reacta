@@ -18,7 +18,6 @@ export const TimeboxEditor = ({ isRunning, setRunning, setTitle, setTimeInMinute
   const handleButtonClick = event => {
     setTitle(_title)
     setTimeInMinutes(_time)
-    setRunning(true)
     setEdited(true)
   }
 

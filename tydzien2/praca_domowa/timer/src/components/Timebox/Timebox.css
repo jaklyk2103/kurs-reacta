@@ -9,3 +9,27 @@
 h2 {
   color: orangered;
 }
+
+.ProgressBar {
+  border: 1px solid orangered;
+  border-radius: 5px;
+  height: 2rem;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.ProgressBar::before {
+  content: "";
+  float: right;
+  background-color: orangered;
+  height: 100%;
+  width: calc(100% - var(--width))
+}
+
+.ProgressBar::after { 
+  content: '';
+  text-align: center;
+  margin: auto;
+  color: blue;
+
+}

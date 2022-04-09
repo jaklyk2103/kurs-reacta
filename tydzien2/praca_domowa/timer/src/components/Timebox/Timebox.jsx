@@ -10,19 +10,25 @@ export const Timebox = ({ isRunning, setRunning, timeInMinutes, title, edited })
 
   const handleStartClick = event => {
     setPaused(false)
+    setRunning(true)
     startCountingTime()
   }
 
   const handleStopClick = event => {
     setPaused(true)
+    setRunning(false)
     setTimePassed(0)
     stopCountingTime()
   }
 
-  const handlePausedClick = event => {
-    setPaused(true)
-    setPausedCounter(pausedCounter + 1)
-    stopCountingTime()
+  const handlePauseResumeClick = event => {
+    if (!isPaused) { 
+      setPausedCounter(pausedCounter + 1)
+      stopCountingTime()
+    } else {
+      startCountingTime()
+    }
+    setPaused(!isPaused)
   }
 
   const startCountingTime = () => {
@@ -36,11 +42,12 @@ export const Timebox = ({ isRunning, setRunning, timeInMinutes, title, edited })
     clearInterval(intervalId)
   }
 
-  const timeInMs = timeInMinutes * 60 * 1000
-  const percentValue = (timePassed / timeInMs) * 100
-  const timeLeftInMilliseconds = timeInMs - timePassed
+  const timeInMilliseconds = timeInMinutes * 60 * 1000
+  const percentValue = (timePassed / timeInMilliseconds) * 100
+  const timeLeftInMilliseconds = timeInMilliseconds - timePassed
   const timeLeftInSeconds = Math.floor(timeLeftInMilliseconds / 1000)
-  const minutesLeft = Math.floor(timeLeftInSeconds / 60)
+  const hoursLeft = Math.floor(timeLeftInSeconds / 60 / 60)
+  const minutesLeft = Math.floor(timeLeftInSeconds / 60) - (60 * hoursLeft)
   const secondsLeft = timeLeftInSeconds % 60
   const millisecondsLeft = timeLeftInMilliseconds % 1000
   console.log(`minutesLeft: ${minutesLeft}`)
@@ -49,11 +56,11 @@ export const Timebox = ({ isRunning, setRunning, timeInMinutes, title, edited })
   return (
     <div className={`Timebox ${edited ? '' : 'inactive'}`}>
       <h1>{title}</h1>
-      <Timer minutes={minutesLeft} seconds={secondsLeft} milliseconds={millisecondsLeft} />
-      <div className="ProgressBar" style={{ '--width': `${percentValue}%` }} />
+      <Timer hours={hoursLeft > 0 ? hoursLeft : null} minutes={minutesLeft} seconds={secondsLeft} milliseconds={millisecondsLeft} />
+      <div className="ProgressBar" style={{ '--width': `${percentValue}%`, '--percent': percentValue ? `${percentValue}%` : '' }} />
       <button disabled={!isPaused} onClick={handleStartClick}>Start</button>
       <button onClick={handleStopClick}>Stop</button>
-      <button disabled={isPaused} onClick={handlePausedClick}>Pause</button>
+      <button onClick={handlePauseResumeClick}>{isPaused ? 'Resume' : 'Pause'}</button>
       Liczba przerw: {pausedCounter}
     </div>
   )
