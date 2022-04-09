@@ -22,13 +22,13 @@ describe('Timer tests', () => {
     {hours: 10, minutes: 12, seconds: 5, milliseconds: null, expected: '10:12:05'},
     {hours: 23, minutes: 12, seconds: 5, milliseconds: null, expected: '23:12:05'},
     {hours: 99, minutes: 12, seconds: 5, milliseconds: null, expected: '23:12:05'},
-    {hours: 23, minutes: 12, seconds: 5, milliseconds: 0, expected: '23:12:05:000'},
-    {hours: 23, minutes: 12, seconds: 5, milliseconds: 1, expected: '23:12:05:001'},
-    {hours: 23, minutes: 12, seconds: 5, milliseconds: 11, expected: '23:12:05:011'},
-    {hours: 23, minutes: 12, seconds: 5, milliseconds: 111, expected: '23:12:05:111'},
-    {hours: 23, minutes: 12, seconds: 5, milliseconds: 1111, expected: '23:12:05:999'},
-    {hours: -19, minutes: -123, seconds: -5, milliseconds: -1111, expected: '00:00:00:000'},
-    {hours: 999, minutes: 999, seconds: 999, milliseconds: 9999, expected: '23:59:59:999'},
+    {hours: 23, minutes: 12, seconds: 5, milliseconds: 0, expected: '23:12:05.000'},
+    {hours: 23, minutes: 12, seconds: 5, milliseconds: 1, expected: '23:12:05.001'},
+    {hours: 23, minutes: 12, seconds: 5, milliseconds: 11, expected: '23:12:05.011'},
+    {hours: 23, minutes: 12, seconds: 5, milliseconds: 111, expected: '23:12:05.111'},
+    {hours: 23, minutes: 12, seconds: 5, milliseconds: 1111, expected: '23:12:05.999'},
+    {hours: -19, minutes: -123, seconds: -5, milliseconds: -1111, expected: '00:00:00.000'},
+    {hours: 999, minutes: 999, seconds: 999, milliseconds: 9999, expected: '23:59:59.999'},
   ])('Should display time correctly for hours:$hours, minutes:$minutes, seconds:$seconds, milliseconds:$milliseconds', ({hours, minutes, seconds, milliseconds, expected}) => {
     setup(hours, minutes, seconds, milliseconds)
     const displayedTime = screen.getByText(expected)

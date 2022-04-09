@@ -20,7 +20,7 @@ export const Timer = ({ hours=null, minutes='00', seconds='00', milliseconds=nul
   const displayedHours = hours !== null ? `${doubleDigitZerosFormatter(normalizeFrom0To23(hours))}:` : '' 
   const displayedMinutes = doubleDigitZerosFormatter(normalizeFrom0To59(minutes))
   const displayedSeconds = doubleDigitZerosFormatter(normalizeFrom0To59(seconds))
-  const displayedMilliseconds = milliseconds !== null ? `:${tripleDigitZerosFormatter(normalizeFrom0To999(milliseconds))}` : ''
+  const displayedMilliseconds = milliseconds !== null ? `.${tripleDigitZerosFormatter(normalizeFrom0To999(milliseconds))}` : ''
 
   return (
     <h2>{displayedHours}{displayedMinutes}:{displayedSeconds}{displayedMilliseconds}</h2>

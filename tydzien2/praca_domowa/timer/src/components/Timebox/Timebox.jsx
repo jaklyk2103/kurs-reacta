@@ -27,8 +27,8 @@ export const Timebox = ({ isRunning, setRunning, timeInMinutes, title, edited })
 
   const startCountingTime = () => {
     const intervalId = window.setInterval(() => {
-      setTimePassed(timePassed => timePassed + 100)
-    }, 100)
+      setTimePassed(timePassed => timePassed + 56)
+    }, 56)
     setIntervalId(intervalId)
   }
 
@@ -38,16 +38,18 @@ export const Timebox = ({ isRunning, setRunning, timeInMinutes, title, edited })
 
   const timeInMs = timeInMinutes * 60 * 1000
   const percentValue = (timePassed / timeInMs) * 100
-  const timeLeftInSeconds = (timeInMs - timePassed) / 1000
-  const minutesLeft = timeLeftInSeconds / 60
+  const timeLeftInMilliseconds = timeInMs - timePassed
+  const timeLeftInSeconds = Math.floor(timeLeftInMilliseconds / 1000)
+  const minutesLeft = Math.floor(timeLeftInSeconds / 60)
   const secondsLeft = timeLeftInSeconds % 60
+  const millisecondsLeft = timeLeftInMilliseconds % 1000
   console.log(`minutesLeft: ${minutesLeft}`)
   console.log(`secondsLeft: ${secondsLeft}`)
 
   return (
     <div className={`Timebox ${edited ? '' : 'inactive'}`}>
       <h1>{title}</h1>
-      <Timer minutes={minutesLeft} seconds={secondsLeft} />
+      <Timer minutes={minutesLeft} seconds={secondsLeft} milliseconds={millisecondsLeft} />
       <div className="ProgressBar" style={{ '--width': `${percentValue}%` }} />
       <button disabled={!isPaused} onClick={handleStartClick}>Start</button>
       <button onClick={handleStopClick}>Stop</button>
