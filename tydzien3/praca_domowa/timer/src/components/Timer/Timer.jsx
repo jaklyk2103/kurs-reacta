@@ -1,3 +1,4 @@
+import './Timer.css'
 import { useState } from 'react'
 
 export const Timer = ({timer, onTimerDelete, onTimerChange}) => {
@@ -24,9 +25,17 @@ export const Timer = ({timer, onTimerDelete, onTimerChange}) => {
       <h1>{name} - {time} min.</h1>
       <button onClick={() => onTimerDelete(timer)}>Usuń</button>
       <button onClick={handleChangeClick}>Zmień</button>
-      <div hidden={!isEditing}>
-        <input type="text" value={editedName} onChange={handleEditedNameChange} />
-        <input type="number" value={editedTime} onChange={handleEditedTimeChange} />
+      <div class="TimerChangeEditor" hidden={!isEditing}>
+        <label>
+          Co robisz?
+          <input type="text" value={editedName} onChange={handleEditedNameChange} />
+        </label>
+        <br />
+        <label>
+          Ile minut?
+          <input type="number" value={editedTime} onChange={handleEditedTimeChange} />
+        </label>
+        <br />
         <button onClick={handleChangeSubmitClick}>Zatwierdź</button>
       </div>
     </div>

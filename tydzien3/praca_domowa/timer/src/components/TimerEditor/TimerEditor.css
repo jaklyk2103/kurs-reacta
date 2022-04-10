@@ -1,0 +1,18 @@
+.TimerEditor {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  text-align: right;
+  line-height: 1.5rem;
+}
+
+input {
+  margin-left: 1rem;
+  width: 60%;
+}
+
+button {
+  padding: 0.25rem;
+  width: 10%;
+  margin-top: 0.25rem
+}

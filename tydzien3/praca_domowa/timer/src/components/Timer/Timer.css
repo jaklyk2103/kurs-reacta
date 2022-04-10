@@ -1,0 +1,25 @@
+.Timer {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 2rem 0.5rem 2rem;
+  padding-bottom: 0.25rem;
+}
+
+.Timer > button {
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
+.TimerChangeEditor {
+  margin: 1rem;
+  padding: 0.25rem;
+  text-align: right;
+  line-height: 1.25rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.TimerChangeEditor > button {
+  padding: 0.5rem;
+  width: 12%;
+}

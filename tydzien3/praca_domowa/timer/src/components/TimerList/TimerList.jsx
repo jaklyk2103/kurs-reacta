@@ -1,3 +1,4 @@
+import './TimerList.css'
 import Timer from '../Timer'
 
 export const TimerList = ({timers, onTimerChange, onTimerDelete}) => {
