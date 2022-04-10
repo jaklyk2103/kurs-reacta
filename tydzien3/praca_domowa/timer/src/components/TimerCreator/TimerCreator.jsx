@@ -1,8 +1,8 @@
-import './TimerEditor.css'
+import './TimerCreator.css'
 // import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-export const TimerEditor = ({ onTimerCreate }) => {
+export const TimerCreator = ({ onTimerCreate }) => {
   // const formRef = useRef()
   // do we need to create this ref? We can get currentTarget from the event object
 
@@ -17,8 +17,8 @@ export const TimerEditor = ({ onTimerCreate }) => {
   }
 
   return (
-    // <form ref={formRef} onSubmit={handleAddClick} className="TimerEditor">
-    <form onSubmit={handleAddClick} className="TimerEditor">
+    // <form ref={formRef} onSubmit={handleAddClick} className="TimerCreator">
+    <form onSubmit={handleAddClick} className="TimerCreator">
       <label>
         Co robisz?
         <input type="text" />

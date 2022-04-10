@@ -1,5 +1,5 @@
 import "./App.css";
-import TimerEditor from "./components/TimerEditor";
+import TimerCreator from "./components/TimerCreator";
 import TimerList from "./components/TimerList";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <TimerEditor onTimerCreate={handleTimerCreate} />
+      <TimerCreator onTimerCreate={handleTimerCreate} />
       <TimerList timers={timers} onTimerChange={handleTimerChange} onTimerDelete={handleTimerDelete} />
     </div>
   );
