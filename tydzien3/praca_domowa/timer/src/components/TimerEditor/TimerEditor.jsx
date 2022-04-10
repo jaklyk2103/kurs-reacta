@@ -1,39 +1,35 @@
 import './TimerEditor.css'
-import { useState } from 'react'
+// import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 export const TimerEditor = ({ onTimerCreate }) => {
-  const [timerName, setTimerName] = useState('')
-  const [timerTime, setTimerTime] = useState(0)
+  // const formRef = useRef()
+  // do we need to create this ref? We can get currentTarget from the event object
 
-  const handleTimerNameChange = event => {
-    setTimerName(event.target.value)
-  }
-  const handleTimerTimeChange = event => {
-    setTimerTime(event.target.value)
-  }
   const handleAddClick = (event) => {
     event.preventDefault()
+    const currentTarget = event.currentTarget
     onTimerCreate({
       key: uuidv4(),
-      name: timerName,
-      time: timerTime
+      name: currentTarget[0].value,
+      time: currentTarget[1].value
     })
   }
 
   return (
-    <form className="TimerEditor">
+    // <form ref={formRef} onSubmit={handleAddClick} className="TimerEditor">
+    <form onSubmit={handleAddClick} className="TimerEditor">
       <label>
         Co robisz?
-        <input type="text" value={timerName} onChange={handleTimerNameChange} />
+        <input type="text" />
         <br />
       </label>
       <label>
         Ile minut?
-        <input type="number" value={timerTime} onChange={handleTimerTimeChange} />
+        <input type="number" />
         <br />
       </label>
-      <button onClick={handleAddClick}>Dodaj</button>
+      <button>Dodaj</button>
     </form>
   )
 }
