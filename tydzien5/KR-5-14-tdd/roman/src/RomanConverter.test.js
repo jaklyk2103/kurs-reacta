@@ -22,12 +22,16 @@ describe('RomanConverter: ', () => {
     const { getByText } = render(<RomanConverter />)
     getByText("Roman")  
   })
-  test('converts an arabic number to roman when entered to the input', () => {
+
+  test.each([
+    [1, 'I'],
+    [19, 'XIX']
+  ])('converts a %d to %s when entered to the input', (input, expectedOutput) => {
     const { getByText, getByRole } = render(<RomanConverter />)
     const textInput = getByRole('textbox')
-    fireEvent.change(textInput, {target: { value: '1' }})
+    fireEvent.change(textInput, {target: { value: input }})
 
-    const romanNumber = getByText('I')
+    const romanNumber = getByText(expectedOutput)
     expect(romanNumber).toBeInTheDocument()
 
   })

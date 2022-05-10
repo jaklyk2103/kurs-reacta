@@ -1,9 +1,12 @@
-import { react, useState } from 'react'
+import { useState } from 'react'
+import { toRoman } from './RomanUtils'
 
 const RomanConverter = () => {
   const [input, setInput] = useState('')
+  const [output, setOutput] = useState('')
   const handleTextChange = (event) => {
     setInput(event.target.value)
+    setOutput(toRoman(Number(event.target.value)))
   }
 
   return(
@@ -16,7 +19,7 @@ const RomanConverter = () => {
 
       <label>
         Roman
-        <span>I</span>
+        <span>{output}</span>
       </label>
       <span></span>
     </>
