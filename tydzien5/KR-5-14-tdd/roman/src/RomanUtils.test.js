@@ -1,4 +1,4 @@
-import { toRoman, toArabic } from './RomanUtils'
+import { toRoman, toArabic, addRoman } from './RomanUtils'
 
 describe('toArabic', () => {
   test.each([
@@ -51,5 +51,18 @@ describe('toRoman', () => {
     [2019, 'MMXIX'],
   ])('converts %d to %s', (input, expectedOutput) => {
     expect(toRoman(input)).toEqual(expectedOutput)
+  })
+})
+
+describe('addRoman', () => {
+  test.each([
+    ['I', 'II', 'III'],
+    ['IV', 'V', 'IX'],
+    ['VIII', 'XV', 'XXIII'],
+    ['XXI', 'IX', 'XXX'],
+    ['XXIV', 'XIX', 'XLIII'],
+    ['CMXCIX', 'DCCCLXVII', 'MDCCCLXVI']
+  ])('adds %s and %s and returns %s', (inputA, inputB, expectedOutput) => {
+    expect(addRoman(inputA, inputB)).toEqual(expectedOutput)
   })
 })

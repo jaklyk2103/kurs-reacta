@@ -49,3 +49,5 @@ export const toRoman = (input) => {
 
   return output
 }
+
+export const addRoman = (a, b) => toRoman(Number(toArabic(a)) + Number(toArabic(b)))
