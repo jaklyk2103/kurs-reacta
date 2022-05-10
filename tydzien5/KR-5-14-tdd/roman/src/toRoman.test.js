@@ -1,4 +1,4 @@
-import toRoman from './toRoman'
+import { toRoman } from './RomanUtils'
 
 describe('toRoman', () => {
   test.each([

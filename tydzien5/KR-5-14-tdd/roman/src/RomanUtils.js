@@ -14,7 +14,25 @@ const numberToRomanMap = {
   1000: 'M'
 }
 
-const toRoman = (input) => {
+export const toArabic = (roman) => {
+  let romanString = roman 
+  let arabic = 0
+  const numbers = Object.keys(numberToRomanMap)
+  const romanValues = Object.values(numberToRomanMap)
+
+  while ( romanString.length > 0 ) {
+    let i = romanValues.length - 1
+    while(romanValues[i] !== romanString.slice(0, romanValues[i].length)) {
+      i--
+    }
+    arabic += Number(numbers[i])
+    romanString = romanString.slice(romanValues[i].length)
+  }
+
+  return arabic
+}
+
+export const toRoman = (input) => {
   let inputNumber = input
   let output = ''
   const numbers = Object.keys(numberToRomanMap)
@@ -31,5 +49,3 @@ const toRoman = (input) => {
 
   return output
 }
-
-export default toRoman
