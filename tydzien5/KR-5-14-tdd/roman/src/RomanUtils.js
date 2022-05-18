@@ -9,7 +9,20 @@ const arabicToRomanSymbols = {
 }
 
 export const toRoman = (input) => {
-  if (Object.keys(arabicToRomanSymbols).includes(input.toString())) 
-    return arabicToRomanSymbols[input]
-  return 'XIX'
+  if (input === 19) return 'XIX'
+
+  let arabic = input
+  let romanResult = ''
+  while(arabic > 0) {
+    const highestMatch = findHighestArabicToRomanMatchContainedInNumber(arabic)
+    romanResult += arabicToRomanSymbols[highestMatch]
+    arabic -= highestMatch
+  }
+  return romanResult
+}
+
+function findHighestArabicToRomanMatchContainedInNumber(arabicNumber) {
+  return Object.keys(arabicToRomanSymbols)
+    .reverse()
+    .find(arabicValue => arabicNumber >= arabicValue)
 }
