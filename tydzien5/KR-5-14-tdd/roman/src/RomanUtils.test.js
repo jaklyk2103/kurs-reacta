@@ -22,6 +22,14 @@ describe('toRoman complex values convertion ', () => {
     [11, 'XI'],
     [13, 'XIII'],
     [17, 'XVII'],
+    [40, 'XL'],
+    [90, 'XC'],
+    [99, 'XCIX'],
+    [140, 'CXL'],
+    [194, 'CXCIV'],
+    [400, 'CD'],
+    [900, 'CM'],
+    [2019, 'MMXIX'],
   ])('Should convert %d to %s', (input, expectedOutput) => {
     expect(toRoman(input)).toBe(expectedOutput)
   })
