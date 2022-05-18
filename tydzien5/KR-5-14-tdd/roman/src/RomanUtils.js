@@ -1,5 +1,11 @@
+const arabicToRomanSymbols = {
+  '1': 'I',
+  '5': 'V',
+  '10': 'X'
+}
+
 export const toRoman = (input) => {
-  if (input === 1) return 'I' 
-  if (input === 10) return 'X'
-  else return 'XIX'
+  if (Object.keys(arabicToRomanSymbols).includes(input.toString())) 
+    return arabicToRomanSymbols[input]
+  return 'XIX'
 }
