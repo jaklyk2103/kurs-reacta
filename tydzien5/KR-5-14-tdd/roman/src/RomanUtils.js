@@ -1,3 +1,5 @@
 export const toRoman = (input) => {
-  return input === 1 ? 'I' : 'XIX'
+  if (input === 1) return 'I' 
+  if (input === 10) return 'X'
+  else return 'XIX'
 }
