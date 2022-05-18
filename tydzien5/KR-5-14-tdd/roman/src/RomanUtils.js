@@ -1,6 +1,7 @@
 const arabicToRomanSymbols = {
   '1': 'I',
   '5': 'V',
+  '9': 'IX',
   '10': 'X',
   '50': 'L',
   '100': 'C',
@@ -9,8 +10,6 @@ const arabicToRomanSymbols = {
 }
 
 export const toRoman = (input) => {
-  if (input === 19) return 'XIX'
-
   let arabic = input
   let romanResult = ''
   while(arabic > 0) {
